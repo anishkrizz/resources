@@ -1,0 +1,23 @@
+<div class="container-fluid content-header sticky-top">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>{{ _formName }}</h1>
+        </div>
+    </div>
+</div>
+
+
+
+<div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <div *ngFor="let question of questions" class="form-row">
+        <app-question [question]="question" [form]="form"></app-question>
+      </div>
+      <div class="form-row">
+        <button type="submit" [disabled]="!form.valid">Save</button>
+      </div>
+    </form>
+    <div *ngIf="payLoad" class="form-row">
+      <strong>Saved the following values</strong><br>{{payLoad}}
+    </div>
+  </div>
